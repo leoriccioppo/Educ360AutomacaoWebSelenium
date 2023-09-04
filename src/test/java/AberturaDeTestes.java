@@ -48,8 +48,8 @@ public class AberturaDeTestes {
         
         
         // Criação usuário
-        User user = new User(driver);
-        user.acessarPaginaDeUsuario();
+//        User user = new User(driver);
+//        user.acessarPaginaDeUsuario();
 //        user.clicarNovo();
 //        user.preencherNome("Leonora Riccioppo");
 //        user.preencherUsuario("leoriccioppo");
@@ -57,7 +57,7 @@ public class AberturaDeTestes {
 //        user.preencherNivel("Nível 1");
 //        user.selecionarStatus("publicado");
 //        user.inserir();
-        user.deletarUsuario(88);     
+//        user.deletarUsuario(88);     
     }
 	
 	@After
