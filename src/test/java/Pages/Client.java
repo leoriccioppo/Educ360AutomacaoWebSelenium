@@ -53,8 +53,29 @@ public class Client extends BasePage {
 	public void deletarClient(int idClient) {
 		driver.findElement(By.xpath("//td[contains(.,'" + idClient + "')]")).click();
 		driver.findElement(By.linkText("Deletar")).click();
-		driver.switchTo().alert().accept();
-		
+		driver.switchTo().alert().accept();		
+	}
+	
+	public void inativarClient(int idClient) {
+		driver.findElement(By.xpath("//td[contains(.,'" + idClient + "')]")).click();
+		driver.findElement(By.linkText("Inativar")).click();
+		driver.switchTo().alert().accept();	
+	}
+	
+	public void criarCliente(String nome, String dataNascimento, String estado, String cidade, String status, String caminhoImagem) {
+	    acessarPaginaDeCliente();
+	    clicarNovo();
+	    preencherNome(nome);
+
+	    if (!caminhoImagem.isEmpty()) {
+	        preencherImagem(caminhoImagem);
+	    }
+
+	    preencherDataNascimento(dataNascimento);
+	    preencherEstado(estado);
+	    preencherCidade(cidade);
+	    selecionarStatus(status);
+	    inserir();
 	}
 	
 }
