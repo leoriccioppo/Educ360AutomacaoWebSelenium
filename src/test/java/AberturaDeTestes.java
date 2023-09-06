@@ -6,9 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-//import Pages.Client;
+
 import Pages.Login;
-//import Pages.User;
+
 
 
 
@@ -23,6 +23,7 @@ public class AberturaDeTestes {
 	}
 	
 	@Test
+	//Verifica se o login é bem-sucedido com credenciais válidas
 	public void testLogin() {
         Login login = new Login(driver);
 
@@ -31,34 +32,38 @@ public class AberturaDeTestes {
         login.preencherSenha();
         login.clicarEntrar();
 
-        // Verifica se o login foi bem-sucedido antes de prosseguir com a criação do cliente
-        Assert.assertEquals("QA Test", driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/h1/small")).getText());
-        
-        // Criação cliente  
-//        Client client = new Client(driver);
-//        client.acessarPaginaDeCliente();
-//        client.clicarNovo();
-//        client.preencherNome("Leonora Riccioppo");
-//        client.preencherDataNascimento("28/05/1994");
-//        client.preencherEstado("RJ");
-//        client.preencherCidade("Rio de Janeiro");
-//        client.selecionarStatus("publicado");
-//        client.inserir();
-//        client.deletarClient(0);
-        
-        
-        // Criação usuário
-//        User user = new User(driver);
-//        user.acessarPaginaDeUsuario();
-//        user.clicarNovo();
-//        user.preencherNome("Leonora Riccioppo");
-//        user.preencherUsuario("leoriccioppo");
-//        user.preencherSenha("senha123");
-//        user.preencherNivel("Nível 1");
-//        user.selecionarStatus("publicado");
-//        user.inserir();
-//        user.deletarUsuario(88);     
+        Assert.assertEquals("QA Test", driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/h1/small")).getText());       
     }
+	
+	@Test 
+	// Verifica se o login falha com credenciais inválidas e exibe a mensagem de erro esperada
+	public void testLoginErro() {
+	    Login login = new Login(driver);
+
+	    login.acessarPaginaDeLogin();
+	    login.preencherEmail();
+	    login.preencherSenhaIncorreta();	    
+	    login.clicarEntrar();
+
+	    String mensagemDeErro = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div/div/div")).getText();
+	    Assert.assertTrue(mensagemDeErro.contains("Usuário ou senha inválidos"));
+	    Assert.assertTrue(mensagemDeErro.contains("×"));
+	}
+	
+	@Test
+	//
+	public void testSearchUser() {	
+		User user = new User();
+		testLogin();
+	    String termoBusca = "Nome do Usuário"; // Substitua pelo nome do usuário que deseja buscar
+
+	    user.acessarPaginaUsuario();
+	    user.realizarBuscaUsuario(termoBusca);
+
+	    // Adicione asserções para verificar se os resultados da busca são os esperados
+	}
+	
+	
 	
 	@After
 	public void fechaBrowser() {

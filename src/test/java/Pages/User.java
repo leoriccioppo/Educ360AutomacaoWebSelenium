@@ -89,7 +89,3 @@ public class User extends BasePage{
 	}
 
  }
-	
-	
-
-

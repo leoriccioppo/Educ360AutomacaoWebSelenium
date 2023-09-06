@@ -30,6 +30,12 @@ public class Login extends BasePage {
         
         
     }
+	
+	public void preencherSenhaIncorreta() {
+		   //driver.findElement(By.name("senha")).sendKeys("qa-test");
+			
+			driver.findElement(By.id("inputPassword")).sendKeys("qatest");
+		}
 		
 
 }
