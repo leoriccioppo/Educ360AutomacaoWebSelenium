@@ -6,9 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import Pages.Client;
+//import Pages.Client;
 import Pages.Login;
-import Pages.User;
+//import Pages.User;
 
 
 
