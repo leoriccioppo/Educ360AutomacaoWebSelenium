@@ -65,6 +65,28 @@ public class User extends BasePage{
 	    // Aceitar o pop-up de confirmação
 	    driver.switchTo().alert().accept();
 	}
+	
+	public void inativarUsuario(int idUsuario) {	
+		driver.findElement(By.xpath("//td[contains(.,'" + idUsuario + "')]")).click();
+		driver.findElement(By.linkText("Inativar")).click();
+		driver.switchTo().alert().accept();	
+	}
+	
+	public void criarUsuario(String nome, String usuario, String senha, String nivel, String status, String caminhoImagem) {
+		acessarPaginaDeUsuario();
+		clicarNovo();
+		preencherNome(nome);
+		
+		if (!caminhoImagem.isEmpty()) {
+	        preencherImagem(caminhoImagem);
+	    }	
+		preencherUsuario(usuario);
+		preencherSenha(senha);
+		preencherNivel(nivel);
+		selecionarStatus(status);
+		inserir();
+		
+	}
 
  }
 	
