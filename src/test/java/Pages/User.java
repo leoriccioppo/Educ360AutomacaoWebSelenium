@@ -88,4 +88,8 @@ public class User extends BasePage{
 		
 	}
 
+	public void realizarBuscaUsuario(String nome) {
+		driver.findElement(By.id("search")).sendKeys(nome);
+	}
+
  }
